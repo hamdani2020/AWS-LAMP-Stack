@@ -1,29 +1,5 @@
-
-<?php 
-
-$connect = mysqli_connect("localhost","root","","gmsa");
-
-if (isset($_POST['register'])) {
-    $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
-    $pname = $_POST['pname'];
-    $email = $_POST['email'];
-    $gender = $_POST['gender'];
-    $contact = $_POST['contact'];
-    $number = $_POST['number'];
-
-
-    $query = "INSERT INTO registration(firstname,lastname,programme,email,gender,contact,number) VALUES('$fname','$lname','$pname','$email','$gender','$contact','$number')";
-
-    $result = mysqli_query($connect,$query);
-
-    if ($result) {
-        echo "<script>alert('You have successfully been registered')</script>";
-    }else{
-        echo "<script>alert('Sorry try again')</script>";
-    }
-}
-
+<?php
+include "connect.php"
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +19,6 @@ if (isset($_POST['register'])) {
 
     <nav>
         <div class="topnav" id="myTopnav">
-            
             <a href="#home" >Home</a>
             <a href="#news">About</a>
             <a href="#contact">Contact</a>
@@ -51,7 +26,7 @@ if (isset($_POST['register'])) {
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
               <i class="fa fa-bars"></i>
             </a>
-          </div>
+        </div>
     </nav>
 
     <div class="container">
@@ -60,29 +35,28 @@ if (isset($_POST['register'])) {
 
         <form class="reg--form" method="post">
             <label>Firstname: </label>
-            <input type="text" name="fname" placeholder="enter firstname">
-            <br>
-            <br>
+            <input type="text" name="fname" placeholder="Enter Firstname" required>
+            <br><br>
             <label>Lastname: </label>
-            <input type="text" name="lname" placeholder="Enter Lastname">
+            <input type="text" name="lname" placeholder="Enter Lastname" required>
             <br><br>
             <label>Programme: </label>
-            <input type="text" name="pname" placeholder="Enter Programme">
+            <input type="text" name="pname" placeholder="Enter Programme" required>
             <br><br>
             <label>Email: </label>
-            <input type="email" name="email" placeholder="Enter Email">
+            <input type="email" name="email" placeholder="Enter Email" required>
             <br><br>
             <label>Gender: </label>
-            <input type="radio" name="gender" value="Male">Male
-            <input type="radio" name="gender" value="Female">Female
+            <input type="radio" name="gender" value="Male" required>Male
+            <input type="radio" name="gender" value="Female" required>Female
             <br><br>
             <label>Contact: </label>
-            <input type="text" name="contact" placeholder="Enter WhatsApp Contact">
+            <input type="text" name="contact" placeholder="Enter WhatsApp Contact" required>
             <br><br>
             <label>Reference Name: </label>
-            <input type="text" name="number" placeholder="Must be 8 digit">
+            <input type="text" name="number" placeholder="Must be 8 digits" required>
             <br><br>
-            <input class="register" type="submit" name="register" value="register">
+            <input class="register" type="submit" name="register" value="Register">
         </form>
     </div>
     <script>
@@ -94,6 +68,7 @@ if (isset($_POST['register'])) {
             x.className = "topnav";
           }
         }
-        </script>
+    </script>
 </body>
 </html>
+

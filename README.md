@@ -1,8 +1,8 @@
-# AWS LAMP Stack Deployment Documentation
+# AWS LAMP Stack Deployment
 
 ## Infrastructure Overview
 
-This documentation outlines the LAMP stack application deployment completed using the AWS Management Console. The deployment follows AWS Well-Architected Framework principles with emphasis on scalability and availability.
+This documentation outlines the LAMP stack application deployment completed. The deployment follows AWS Well-Architected Framework principles with emphasis on scalability and availability.
 
 ## Architecture Diagram
 

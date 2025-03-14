@@ -6,7 +6,7 @@ This documentation outlines the LAMP stack application deployment completed usin
 
 ## Architecture Diagram
 
-1[IMAGE](./images/architecture.jpeg)
+[MAGE](./images/architecture.jpeg)
 
 ## 1. Network Configuration Details
 

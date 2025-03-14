@@ -21,7 +21,6 @@ I've configured a multi-tier network architecture to provide security and isolat
   - Public route tables with Internet Gateway access
   - Private route tables with NAT Gateway for outbound traffic
 - **Internet Gateway:** For public internet access
-- **NAT Gateways:** Deployed in each public subnet for private subnet outbound connectivity
 
 ## 2. Security Configuration
 
@@ -75,29 +74,14 @@ The following installations are performed on each EC2 instance via user data scr
 
 ```bash
 #!/bin/bash
-# Update system packages
-yum update -y
-
-# Install Apache web server
-yum install -y httpd
-systemctl start httpd
-systemctl enable httpd
-
-# Install PHP and required extensions
-amazon-linux-extras enable php7.4
-yum clean metadata
-yum install -y php php-mysqlnd php-fpm php-json php-gd
-
-# Install CloudWatch agent
-yum install -y amazon-cloudwatch-agent
-systemctl start amazon-cloudwatch-agent
-systemctl enable amazon-cloudwatch-agent
-
-# Download application code
-aws s3 cp s3://lamp-application-source/app/ /var/www/html/ --recursive
-
-# Set proper permissions
-chown -R apache:apache /var/www/html/
+sudo yum update -y
+sudo yum install -y docker
+sudo systemctl start docker
+sudo systemctl enable docker
+sudo docker pull lusitech/lamp-stack:v10
+sudo docker pull lusitech/lamp-phpmyadmin:v3
+sudo docker run -d -p 8080:80 --restart always --name php-app lusitech/lamp-stack:v10
+sudo docker run -d -p 8081:80 --restart always --name myadb lusitech/lamp-phpmyadmin:v3
 ```
 
 ## 6. Monitoring and Logging
